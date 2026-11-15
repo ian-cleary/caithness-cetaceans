@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caithness Cetaceans — whales, dolphins, porpoises and seals on the Caithness coast</title>
+<meta name="description" content="What's been seen lately, where to watch, and who keeps the records — marine mammals and cetaceans on the Caithness coast, from Thurso to John o' Groats.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Caithness Cetaceans — visual system, Nov 2026.
+   Same family as the Rectory Naturecam: field-guide / expedition log.
+   Deep forest green, warm ochre, burnt rust, stone cream paper, slate.
+   Archivo Black display, Archivo body. Flat hand-drawn SVG glyphs only —
+   no photographs, no AI imagery. */
+:root{
+  --paper:#f4efe4; --card:#fdfbf3; --wood:#ece4cd;
+  --ink:#22302a; --muted:#5f6a5c; --slate:#3a4a44;
+  --forest:#1f3d2b; --forest-deep:#152a1d; --forest-mid:#2a4d38;
+  --sea:#2e6b6b; --sea-deep:#1e4a4a;
+  --ochre:#d9a441; --rust:#c65d21;
+  --hairline:#d5cdb4;
+  --display:'Archivo Black', 'Arial Black', Impact, sans-serif;
+  --sans:'Archivo', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background-color:var(--paper);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");color:var(--ink);font:17px/1.6 var(--sans)}
+a{color:var(--rust);text-underline-offset:2px}
+a:hover{color:var(--forest)}
+.wrap{max-width:1020px;margin:0 auto;padding:0 20px 48px}
+header.mast{position:relative;overflow:hidden;background:var(--forest-deep);color:#f4efe4;border-bottom:8px solid var(--ochre)}
+header.mast .scene{position:absolute;inset:0;width:100%;height:100%}
+header.mast .scene svg{width:100%;height:100%;display:block}
+header.mast .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,42,29,.82) 0%,rgba(21,42,29,.45) 30%,rgba(21,42,29,.08) 55%,rgba(21,42,29,.55) 100%)}
+header.mast .wrap{position:relative;padding-top:clamp(44px,7vh,80px);padding-bottom:56px}
+.eyebrow{display:inline-block;margin:0 0 22px;padding:9px 16px;border:2px solid var(--ochre);transform:rotate(-1.4deg);background:rgba(21,42,29,.6);font:800 13px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--ochre)}
+header.mast h1{margin:0;font:400 clamp(44px,8vw,84px)/.94 var(--display);letter-spacing:.01em;text-transform:uppercase;text-shadow:0 4px 22px rgba(0,0,0,.5)}
+header.mast p{margin:18px 0 0;font-size:19px;line-height:1.5;opacity:.96;max-width:640px;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.hero-cap{display:flex;flex-wrap:wrap;gap:4px 14px;background:rgba(21,42,29,.88);color:#f4efe4;padding:13px 22px;font-size:14px;border-top:2px solid rgba(217,164,65,.65)}
+.hero-cap b{font-weight:800;color:var(--ochre)}
+h2{font:400 clamp(28px,3.6vw,38px)/1.05 var(--display);text-transform:uppercase;letter-spacing:.01em;color:var(--forest);border-bottom:6px solid var(--ochre);padding-bottom:10px;margin:44px 0 18px}
+h3{font:400 clamp(20px,2.4vw,24px)/1.15 var(--display);text-transform:uppercase;color:var(--forest);margin:20px 0 8px}
+.stats{position:relative;overflow:hidden;display:flex;flex-wrap:wrap;margin:0 calc(50% - 50vw);padding:6px max(20px,calc(50% - 510px));background:var(--ochre);border-top:8px solid var(--forest);border-bottom:8px solid var(--forest)}
+.stat{flex:1 1 180px;padding:20px 12px 18px;text-align:center;position:relative}
+.stat + .stat{border-left:2px solid rgba(31,61,43,.35)}
+.stat b{display:block;font:400 clamp(40px,5vw,54px)/1 var(--display);color:var(--forest)}
+.stat span{display:block;margin-top:10px;font:800 12px/1.35 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--forest-deep)}
+.note{font-size:15px;color:var(--muted);max-width:760px}
+.note b{color:var(--ink)}
+.sight-list{list-style:none;margin:0;padding:0}
+.sight-list li{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;background:var(--card);border:2px solid var(--forest);border-radius:4px;padding:12px 16px;margin:0 0 10px}
+.sight-list .when{font:800 14px var(--sans);letter-spacing:.06em;color:var(--forest);white-space:nowrap}
+.sight-list .what{font:400 19px/1.2 var(--display);text-transform:uppercase;color:var(--forest)}
+.sight-list .what .latin{font:italic 400 14px/1.3 var(--sans);text-transform:none;color:var(--muted)}
+.sight-list .where{color:var(--muted);font-size:15px}
+.sight-list .src{margin-left:auto;font-size:13px;font-weight:700}
+.sight-list .shark-tag{display:inline-block;background:var(--sea);color:#fff;font:800 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;border-radius:4px;padding:3px 8px}
+#sightings-empty{display:none;background:var(--card);border:2px solid var(--forest);border-radius:4px;padding:18px;font-size:16px}
+.species{background:var(--card);border:2px solid var(--forest);border-radius:4px;margin:0 0 22px;overflow:hidden}
+.species>header{display:flex;align-items:center;flex-wrap:wrap;gap:12px;background:var(--forest);color:#fff;padding:12px 16px}
+.species>header .glyph{flex:0 0 60px;width:60px;height:45px;background:var(--ochre);border:2px solid rgba(255,255,255,.6);border-radius:4px;padding:4px}
+.species>header .glyph svg{width:100%;height:100%}
+.species>header .sname{flex:1;font:400 clamp(20px,2.6vw,24px)/1.1 var(--display);text-transform:uppercase;letter-spacing:.01em}
+.species>header .sname .latin{font:italic 400 15px/1.3 var(--sans);opacity:.92;text-transform:none;letter-spacing:0}
+.species>header .count{font:800 13px var(--sans);letter-spacing:.08em;text-transform:uppercase;background:var(--ochre);color:var(--forest-deep);border-radius:4px;padding:6px 10px;white-space:nowrap}
+.species .blurb{margin:16px 18px 6px}
+.species .when{margin:6px 18px 16px;color:var(--muted);font-size:15px}
+.species .when b{color:var(--forest)}
+.occasional{background:var(--wood);border:2px solid var(--forest);border-radius:4px;padding:18px 20px;margin:0 0 22px}
+.occasional h3{margin-top:0}
+.occasional ul{margin:6px 0 0;padding-left:22px}
+.occasional li{margin:6px 0}
+.spot{background:var(--card);border:2px solid var(--forest);border-radius:4px;padding:18px 20px;margin:0 0 16px}
+.spot h3{margin-top:0}
+.spot p{margin:6px 0}
+.spot .look{color:var(--muted);font-size:15px}
+.spot .look b{color:var(--forest)}
+.tips{background:var(--forest);color:#f4efe4;border-top:8px solid var(--ochre);border-radius:4px;padding:26px 24px 14px;margin:28px 0}
+.tips .kicker{display:inline-block;margin:0 0 14px;padding:8px 14px;border:2px solid var(--ochre);transform:rotate(-1.2deg);font:800 13px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--ochre)}
+.tips h3{color:#f4efe4;margin:0 0 12px;font-size:clamp(24px,3vw,30px)}
+.tips ul{margin:0 0 14px;padding-left:22px}
+.tips li{margin:6px 0;opacity:.95}
+.band-dark{position:relative;overflow:hidden;margin:36px calc(50% - 50vw);padding:36px max(20px,calc(50% - 510px)) 40px;background:var(--forest);border-top:8px solid var(--ochre);border-bottom:8px solid var(--ochre)}
+.band-dark h2{color:#f4efe4;margin:0 0 20px;border-bottom-color:var(--ochre)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.tcard{background:var(--card);border:2px solid var(--forest-deep);border-radius:4px;padding:18px 20px;color:var(--ink)}
+.tcard h3{margin:0 0 4px}
+.tcard .badge{display:inline-block;margin:0 0 10px;background:var(--ochre);color:var(--forest-deep);font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;border-radius:4px;padding:4px 9px}
+.tcard .badge.live{background:var(--forest);color:#f4efe4}
+.tcard .badge.help{background:var(--rust);color:#fff}
+.tcard p{margin:6px 0;font-size:15px}
+.tcard ul{margin:6px 0 0;padding-left:20px;font-size:15px}
+.tcard li{margin:4px 0}
+.report{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.panel{background:var(--card);border:2px solid var(--forest);border-radius:4px;padding:20px 22px}
+.panel.help{border-top:8px solid var(--rust)}
+.panel.seen{border-top:8px solid var(--ochre)}
+.panel h3{margin-top:0}
+.panel .big{font:400 clamp(24px,3vw,30px)/1.1 var(--display);color:var(--forest);text-transform:uppercase}
+.panel .big a{color:var(--forest);text-decoration:none}
+.panel p,.panel li{font-size:15px}
+.panel ul{padding-left:20px}
+footer.site{background:var(--forest-deep);color:#e9e4d6;margin-top:44px;border-top:8px solid var(--ochre)}
+footer.site .wrap{padding:32px 20px 36px}
+footer.site p{margin:0 0 10px;font-size:14px;line-height:1.6}
+footer.site p:last-child{margin:0;font:800 12px/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ochre)}
+@media(max-width:640px){
+  header.mast h1{font-size:44px}
+  h2{font-size:26px}
+  .stat + .stat{border-left:none;border-top:2px solid rgba(31,61,43,.35)}
+  .species>header .sname{font-size:18px}
+  .species>header .glyph{flex-basis:52px;width:52px;height:39px}
+  .band-dark{padding:28px 20px 32px}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="scene" aria-hidden="true">
+    <!-- Flat infographic seascape: headland, Pentland Firth, orca and dolphins. Drawn SVG, no photographs. -->
+    <svg viewBox="0 0 1200 480" preserveAspectRatio="xMidYMax slice">
+      <rect x="0" y="0" width="1200" height="480" fill="#f4efe4"/>
+      <circle cx="1020" cy="86" r="46" fill="#d9a441"/>
+      <circle cx="1020" cy="86" r="62" fill="none" stroke="#d9a441" stroke-width="3" opacity=".45"/>
+      <path d="M0 210 L120 190 L260 214 L420 186 L600 208 L760 188 L920 212 L1080 192 L1200 206 L1200 480 L0 480 Z" fill="#9db8a4"/>
+      <path d="M0 250 L140 236 L300 254 L480 232 L660 252 L840 234 L1020 254 L1200 238 L1200 480 L0 480 Z" fill="#5d8a7d"/>
+      <path d="M0 300 L160 288 L340 306 L520 290 L700 308 L880 292 L1060 306 L1200 294 L1200 480 L0 480 Z" fill="#2e6b6b"/>
+      <path d="M0 350 L200 338 L420 356 L640 340 L860 358 L1080 342 L1200 352 L1200 480 L0 480 Z" fill="#1e4a4a"/>
+      <path d="M0 410 L240 398 L480 414 L720 400 L960 414 L1200 402 L1200 480 L0 480 Z" fill="#152a1d"/>
+      <!-- Headland, left -->
+      <path d="M0 480 L0 300 L60 250 L120 262 L170 300 L150 360 L120 480 Z" fill="#1f3d2b"/>
+      <path d="M60 250 L120 262 L150 360 L120 480 L60 480 Z" fill="#152a1d" opacity=".55"/>
+      <!-- Orca -->
+      <g transform="translate(560 300)">
+        <path d="M-95 18 Q-60 -14 0 -12 Q70 -10 108 8 Q118 14 108 22 Q60 34 0 30 Q-60 26 -95 18 Z" fill="#14211a" stroke="#f4efe4" stroke-width="2"/>
+        <path d="M-95 18 Q-40 30 0 30 Q-30 40 -70 34 Q-92 30 -95 18 Z" fill="#f4efe4"/>
+        <path d="M-78 2 Q-70 -4 -62 0 Q-70 6 -78 2 Z" fill="#f4efe4"/>
+        <path d="M-8 -10 Q6 -52 22 -50 Q14 -16 8 -8 Z" fill="#14211a" stroke="#f4efe4" stroke-width="2"/>
+        <path d="M30 -12 Q44 -22 52 -12 Q40 -6 30 -12 Z" fill="#f4efe4" opacity=".85"/>
+        <path d="M96 6 Q122 -8 132 4 Q118 16 100 14 Z" fill="#14211a" stroke="#f4efe4" stroke-width="2"/>
+        <path d="M96 20 Q112 34 96 40 Q88 30 96 20 Z" fill="#14211a" stroke="#f4efe4" stroke-width="2"/>
+      </g>
+      <!-- Dolphin -->
+      <g transform="translate(830 340)">
+        <path d="M-70 10 Q-40 -12 0 -10 Q50 -8 78 4 Q84 8 76 12 Q40 22 0 20 Q-45 18 -70 10 Z" fill="#5d8a7d" stroke="#f4efe4" stroke-width="2"/>
+        <path d="M-70 10 Q-30 20 0 20 Q-20 26 -52 22 Q-68 18 -70 10 Z" fill="#f4efe4" opacity=".8"/>
+        <path d="M-6 -9 Q2 -34 14 -32 Q8 -12 4 -8 Z" fill="#5d8a7d" stroke="#f4efe4" stroke-width="2"/>
+        <path d="M70 2 Q92 -6 98 4 Q84 12 72 10 Z" fill="#5d8a7d" stroke="#f4efe4" stroke-width="2"/>
+      </g>
+      <!-- Seal on a rock -->
+      <g transform="translate(180 392)">
+        <path d="M-52 22 Q-40 0 0 -2 Q44 0 54 22 Q0 30 -52 22 Z" fill="#3a4a44" stroke="#f4efe4" stroke-width="2"/>
+        <path d="M-30 -2 Q-34 -26 -18 -34 Q-6 -38 2 -26 Q10 -12 4 -2 Z" fill="#6b7a72" stroke="#f4efe4" stroke-width="2"/>
+        <circle cx="-14" cy="-26" r="2.4" fill="#14211a"/>
+      </g>
+    </svg>
+  </div>
+  <div class="shade"></div>
+  <div class="wrap">
+    <p class="eyebrow">Caithness coast · Thurso to John o&rsquo; Groats</p>
+    <h1>Caithness<br>Cetaceans</h1>
+    <p>Whales, dolphins, porpoises and seals on the Caithness coast — what&rsquo;s been seen lately, where to watch, and who keeps the records.</p>
+  </div>
+  <div class="hero-cap"><span><b>Live feed</b> · iNaturalist public sightings</span><span><b>Updated</b> · <span id="updated-top">loading…</span></span><span><b>Area</b> · Caithness coast &amp; Pentland Firth</span></div>
+</header>
+
+<div class="stats">
+  <div class="stat"><b>9</b><span>Regular species</span></div>
+  <div class="stat"><b>7</b><span>Common cetaceans in Scotland</span></div>
+  <div class="stat"><b>29 May</b><span>Orca Watch 2027 starts</span></div>
+  <div class="stat"><b>14 mi</b><span>Pentland Firth, end to end</span></div>
+</div>
+
+<div class="wrap">
+
+<section id="sightings">
+  <h2>Recent sightings</h2>
+  <p class="note">Live from the <b>iNaturalist</b> public API — the latest public records of whales, dolphins, porpoises, seals and basking sharks inside the Caithness coast box (lat 58.30–58.80, lng −4.60–−2.70). Refreshed every few hours. Seals dominate this feed; for whales and dolphins the fastest news is the Facebook group and Sea Watch, below.</p>
+  <ul class="sight-list" id="sight-list"></ul>
+  <div id="sightings-empty">The live feed could not be loaded just now. The trackers below are the next best place to look — <a href="https://www.seawatchfoundation.org.uk/recent-sightings/">Sea Watch recent sightings</a> and the <a href="https://www.seawatchfoundation.org.uk/orca-watch-sightings/">Orca Watch sightings</a> pages are updated through the season.</div>
+  <p class="note">Every record links back to its iNaturalist observation, with the observer named there. Unverified sightings appear too — iNaturalist is a public log, not a verified list.</p>
+</section>
+
+<section id="species">
+  <h2>Species guide — this coast</h2>
+  <p class="note">Nine regulars: seven cetaceans NatureScot calls relatively common in Scottish waters, plus the two seals. Glyphs are hand-drawn, not photographs.</p>
+
+  <article class="species">
+    <header><span class="glyph" aria-hidden="true"><svg viewBox="0 0 120 90"><path d="M8 52 Q30 20 62 22 Q100 24 112 44 Q104 62 62 64 Q28 62 8 52 Z" fill="#14211a" stroke="#f4efe4" stroke-width="2"/><path d="M8 52 Q34 64 62 64 Q44 72 18 66 Q8 62 8 52 Z" fill="#f4efe4"/><path d="M18 38 Q26 30 34 36 Q26 44 18 38 Z" fill="#f4efe4"/><path d="M52 22 Q62 -6 76 0 Q66 18 58 22 Z" fill="#14211a" stroke="#f4efe4" stroke-width="2"/><path d="M74 24 Q84 14 92 22 Q82 30 74 24 Z" fill="#f4efe4" opacity=".85"/><path d="M104 42 Q116 32 118 44 Q108 52 104 48 Z" fill="#14211a" stroke="#f4efe4" stroke-width="2"/></svg></span><span class="sname">Orca <span class="latin">Orcinus orca — killer whale</span></span><span class="count">Star of the Firth</span></header>
+    <p class="blurb">The largest dolphin, and the reason the Pentland Firth is recognised as the UK&rsquo;s top place to see orcas. Family pods travel the Firth hunting seals, often close inshore — orcas have come within metres of John o&rsquo; Groats pier. Named pods pass through, including &ldquo;the 27s&rdquo;, watched from Ackergill to Duncansby to John o&rsquo; Groats on 7 November 2026.</p>
+    <p class="when"><b>When:</b> peak late May–June (Orca Watch), and seen into the autumn.</p>
+  </article>
+
+  <article class="species">
+    <header><span class="glyph" aria-hidden="true"><svg viewBox="0 0 120 90"><path d="M14 52 Q36 26 64 28 Q96 30 108 48 Q98 62 62 62 Q30 60 14 52 Z" fill="#22302a" stroke="#f4efe4" stroke-width="2"/><path d="M14 52 Q40 62 64 62 Q48 68 26 64 Q14 60 14 52 Z" fill="#f4efe4" opacity=".85"/><path d="M52 28 Q58 6 70 10 Q62 24 56 28 Z" fill="#22302a" stroke="#f4efe4" stroke-width="2"/><path d="M100 46 Q112 38 114 48 Q106 54 100 50 Z" fill="#22302a" stroke="#f4efe4" stroke-width="2"/></svg></span><span class="sname">Harbour porpoise <span class="latin">Phocoena phocoena</span></span><span class="count">Most abundant</span></header>
+    <p class="blurb">Scotland&rsquo;s smallest cetacean and the most abundant in inshore waters. Usually alone or in small groups — a small, dark, triangular fin rolling at the surface, no leaping. Common in Dunnet Bay through the summer, following the fish in.</p>
+    <p class="when"><b>When:</b> year-round; most often in summer, with an autumn peak in the Shorewatch data.</p>
+  </article>
+
+  <article class="species">
+    <header><span class="glyph" aria-hidden="true"><svg viewBox="0 0 120 90"><path d="M10 50 Q34 22 64 24 Q98 26 110 44 Q100 60 62 62 Q28 60 10 50 Z" fill="#5d8a7d" stroke="#f4efe4" stroke-width="2"/><path d="M10 50 Q38 62 64 62 Q46 70 22 64 Q10 58 10 50 Z" fill="#f4efe4" opacity=".85"/><path d="M52 24 Q60 2 72 6 Q64 20 56 24 Z" fill="#5d8a7d" stroke="#f4efe4" stroke-width="2"/><path d="M102 42 Q114 34 116 46 Q106 54 102 48 Z" fill="#5d8a7d" stroke="#f4efe4" stroke-width="2"/></svg></span><span class="sname">Bottlenose dolphin <span class="latin">Tursiops truncatus</span></span><span class="count">Big &amp; bold</span></header>
+    <p class="blurb">Big, bold and the most acrobatic of the local dolphins. Eighteen sightings were logged during Orca Watch 2022, and Swiney Head at Lybster is a noted spot for them.</p>
+    <p class="when"><b>When:</b> summer peak.</p>
+  </article>
+
+  <article class="species">
+    <header><span class="glyph" aria-hidden="true"><svg viewBox="0 0 120 90"><path d="M10 50 Q34 22 64 24 Q98 26 110 44 Q100 60 62 62 Q28 60 10 50 Z" fill="#7a9a8d" stroke="#f4efe4" stroke-width="2"/><path d="M10 50 Q38 62 64 62 Q46 70 22 64 Q10 58 10 50 Z" fill="#f4efe4" opacity=".85"/><path d="M52 24 Q60 2 72 6 Q64 20 56 24 Z" fill="#7a9a8d" stroke="#f4efe4" stroke-width="2"/><path d="M102 42 Q114 34 116 46 Q106 54 102 48 Z" fill="#7a9a8d" stroke="#f4efe4" stroke-width="2"/></svg></span><span class="sname">Common dolphin <span class="latin">Delphinus delphis</span></span><span class="count">Summer visitor</span></header>
+    <p class="blurb">Summer visitors, mainly between May and October when food is most abundant. Fast, leaping groups, often well offshore. Six sightings during Orca Watch 2022; one was logged on iNaturalist off this coast on 11 October 2026.</p>
+    <p class="when"><b>When:</b> May–October.</p>
+  </article>
+
+  <article class="species">
+    <header><span class="glyph" aria-hidden="true"><svg viewBox="0 0 120 90"><path d="M10 50 Q34 22 64 24 Q98 26 110 44 Q100 60 62 62 Q28 60 10 50 Z" fill="#8a9a94" stroke="#f4efe4" stroke-width="2"/><path d="M10 50 Q38 62 64 62 Q46 70 22 64 Q10 58 10 50 Z" fill="#f4efe4" opacity=".85"/><path d="M52 24 Q60 2 72 6 Q64 20 56 24 Z" fill="#8a9a94" stroke="#f4efe4" stroke-width="2"/><path d="M102 42 Q114 34 116 46 Q106 54 102 48 Z" fill="#8a9a94" stroke="#f4efe4" stroke-width="2"/></svg></span><span class="sname">White-beaked dolphin <span class="latin">Lagenorhynchus albirostris</span></span><span class="count">Northern water</span></header>
+    <p class="blurb">A dolphin of northern waters, listed among the dolphins regularly seen from the Caithness shore. Often in groups, and one of the seven cetaceans NatureScot calls relatively common in Scottish waters.</p>
+    <p class="when"><b>When:</b> summer.</p>
+  </article>
+
+  <article class="species">
+    <header><span class="glyph" aria-hidden="true"><svg viewBox="0 0 120 90"><path d="M12 52 Q34 24 62 26 Q96 28 108 46 Q98 62 62 62 Q30 60 12 52 Z" fill="#6b7a72" stroke="#f4efe4" stroke-width="2"/><path d="M12 52 Q40 62 62 62 Q46 70 24 64 Q12 58 12 52 Z" fill="#f4efe4" opacity=".85"/><path d="M52 26 Q58 4 70 8 Q62 22 56 26 Z" fill="#6b7a72" stroke="#f4efe4" stroke-width="2"/><path d="M100 44 Q112 36 114 48 Q106 54 100 50 Z" fill="#6b7a72" stroke="#f4efe4" stroke-width="2"/><circle cx="30" cy="42" r="2.5" fill="#f4efe4" opacity=".7"/></svg></span><span class="sname">Risso&rsquo;s dolphin <span class="latin">Grampus griseus</span></span><span class="count">Late-summer peak</span></header>
+    <p class="blurb">Big, blunt-headed dolphins, grey and heavily scarred with age. Forty-four sightings were logged during Orca Watch 2022 — as many as minke whales — and one was identified from Dunnet Head in August 2025.</p>
+    <p class="when"><b>When:</b> late-summer peak.</p>
+  </article>
+
+  <article class="species">
+    <header><span class="glyph" aria-hidden="true"><svg viewBox="0 0 120 90"><path d="M6 48 Q40 24 66 26 Q100 28 114 44 Q102 58 64 60 Q28 58 6 48 Z" fill="#3a4a44" stroke="#f4efe4" stroke-width="2"/><path d="M6 48 Q40 60 66 60 Q44 66 18 60 Q6 56 6 48 Z" fill="#f4efe4" opacity=".8"/><path d="M78 28 Q84 14 92 18 Q86 28 80 30 Z" fill="#3a4a44" stroke="#f4efe4" stroke-width="2"/><path d="M106 42 Q116 36 117 46 Q110 52 105 48 Z" fill="#3a4a44" stroke="#f4efe4" stroke-width="2"/></svg></span><span class="sname">Minke whale <span class="latin">Balaenoptera acutorostrata</span></span><span class="count">June–July peak</span></header>
+    <p class="blurb">The small, fast baleen whale of these waters — a curved back and a small dorsal fin, surfacing for a couple of breaths and gone. Forty-four sightings during Orca Watch 2022. Swiney Head at Lybster is a noted spot.</p>
+    <p class="when"><b>When:</b> June–July peak.</p>
+  </article>
+
+  <article class="species">
+    <header><span class="glyph" aria-hidden="true"><svg viewBox="0 0 120 90"><path d="M8 66 Q6 44 26 30 Q30 14 44 10 Q58 8 62 22 Q78 26 84 44 Q96 52 104 62 Q60 74 8 66 Z" fill="#8a6f56" stroke="#f4efe4" stroke-width="2"/><circle cx="46" cy="20" r="2.5" fill="#14211a"/><path d="M60 56 Q72 48 84 54 Q72 62 60 56 Z" fill="#5d4a38" stroke="#f4efe4" stroke-width="1.5"/></svg></span><span class="sname">Grey seal <span class="latin">Halichoerus grypus</span></span><span class="count">Year-round</span></header>
+    <p class="blurb">The bigger seal, with a long &ldquo;horse-like&rdquo; face, and more common than the harbour seal around the Firth. Hauls out in groups on rock platforms — Gills and Brough Bays are the best viewpoints — and on the rocks around Stroma and Swona.</p>
+    <p class="when"><b>When:</b> year-round; white pups are born October to January.</p>
+  </article>
+
+  <article class="species">
+    <header><span class="glyph" aria-hidden="true"><svg viewBox="0 0 120 90"><path d="M14 66 Q12 48 28 36 Q32 20 44 16 Q56 14 60 26 Q74 30 80 46 Q92 54 98 62 Q58 72 14 66 Z" fill="#a08b74" stroke="#f4efe4" stroke-width="2"/><circle cx="46" cy="24" r="2.5" fill="#14211a"/><path d="M58 56 Q68 50 78 54 Q68 60 58 56 Z" fill="#7a6a58" stroke="#f4efe4" stroke-width="1.5"/></svg></span><span class="sname">Harbour seal <span class="latin">Phoca vitulina</span></span><span class="count">Year-round</span></header>
+    <p class="blurb">Smaller, round-faced and shyer than the grey. Pups are born in May, June and July and can swim from birth. A good number overwinter on the small islands in the River Thurso, a short walk from the town centre.</p>
+    <p class="when"><b>When:</b> year-round; pups May–July.</p>
+  </article>
+
+  <div class="occasional">
+    <h3>Occasional visitors</h3>
+    <ul>
+      <li><b>Humpback whale</b> — two sightings during Orca Watch 2022; seen in deeper water.</li>
+      <li><b>Long-finned pilot whale</b> — regularly seen off this coast, in tight groups.</li>
+      <li><b>Atlantic white-sided dolphin</b> — recorded off Caithness, often with white-beaked dolphins.</li>
+      <li><b>Fin whale</b> — the second-largest animal on Earth, in deeper water offshore.</li>
+      <li><b>Basking shark</b> — <i>a fish, not a mammal</i>: the giant filter-feeder passes through the Firth on rare summer days. Report it to the Marine Conservation Society&rsquo;s Basking Shark Sightings Project.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="spots">
+  <h2>Where to watch</h2>
+  <p class="note">Headlands with height, looking down onto the sea. The Pentland Firth runs from Dunnet Head in the west to Duncansby Head in the east — the strait the orcas travel.</p>
+
+  <article class="spot">
+    <h3>Dunnet Head</h3>
+    <p>The most northerly point of mainland Britain, with an RSPB reserve on the cliffs. Seals, dolphins and whales in the Pentland Firth below; the viewing platform is a few metres from the car park.</p>
+    <p class="look"><b>Look for:</b> orca, porpoise, minke, seals — and puffins on the cliffs in summer.</p>
+  </article>
+
+  <article class="spot">
+    <h3>Duncansby Head &amp; Stacks</h3>
+    <p>Clifftop paths and one of the classic orca vantage points — watchers waited here for pods working up the coast during Orca Watch. About a 15-minute walk from the car park to the stacks viewpoint.</p>
+    <p class="look"><b>Look for:</b> orca above all, plus minke, Risso&rsquo;s and bottlenose dolphins.</p>
+  </article>
+
+  <article class="spot">
+    <h3>John o&rsquo; Groats</h3>
+    <p>Harbour viewpoints where orcas have come within metres of the pier, and the ferry to Orkney doubles as a watching platform — orca watchers ride it deliberately, and the morning sailing has produced sightings.</p>
+    <p class="look"><b>Look for:</b> orca, dolphins, grey seals lounging near the harbour.</p>
+  </article>
+
+  <article class="spot">
+    <h3>Gills Bay</h3>
+    <p>Quiet beaches heading west from John o&rsquo; Groats towards the ferry pier. Wildlife cruises leave from here, and seals haul out on Stroma and Swona across the Firth.</p>
+    <p class="look"><b>Look for:</b> seals on the islands, porpoise, orca and minke in the Firth.</p>
+  </article>
+
+  <article class="spot">
+    <h3>Brough Bay</h3>
+    <p>Seals haul out on the rock platforms here, and it is an Orca Watch station — four orcas were watched from here on 24 May 2026.</p>
+    <p class="look"><b>Look for:</b> grey and harbour seals hauled out; orca passing through.</p>
+  </article>
+
+  <article class="spot">
+    <h3>Dunnet Bay</h3>
+    <p>Two miles of sand backed by dunes, part of the Dunnet Links National Nature Reserve. Porpoises follow the fish in through the summer, and both seal species haul out on the rock platforms.</p>
+    <p class="look"><b>Look for:</b> harbour porpoise in summer; seals hauled out at low water.</p>
+  </article>
+
+  <article class="spot">
+    <h3>Thurso Bay &amp; Scrabster</h3>
+    <p>Orcas have been spotted from Thurso Bay itself, and harbour seals overwinter on the small islands in the River Thurso. Wildlife cruises and the NorthLink ferry to Stromness leave from Scrabster harbour.</p>
+    <p class="look"><b>Look for:</b> harbour seals on the river islands; orca and dolphins from the harbour and the ferry.</p>
+  </article>
+
+  <article class="spot">
+    <h3>Sandside Head</h3>
+    <p>Headland above Sandside Bay near Reay. High Life Highland countryside rangers run guided sea watches here during the Sea Watch Foundation&rsquo;s National Whale &amp; Dolphin Watch in late July.</p>
+    <p class="look"><b>Look for:</b> whatever is passing — the rangers bring telescopes.</p>
+  </article>
+
+  <article class="spot">
+    <h3>Auckengill</h3>
+    <p>East-coast village on the road to John o&rsquo; Groats. The &ldquo;64s&rdquo; orca pod came within 30 feet of the shore here in June 2022, and grey seals were logged here in October 2026.</p>
+    <p class="look"><b>Look for:</b> orca close inshore; grey seals.</p>
+  </article>
+
+  <div class="tips">
+    <p class="kicker">How to watch</p>
+    <h3>Reading the sea</h3>
+    <ul>
+      <li>Choose calm days — white horses hide dorsal fins and blows.</li>
+      <li>Light is best early morning or late afternoon.</li>
+      <li>Pick a headland with height and scan with the naked eye first, then binoculars.</li>
+      <li>Watch the seabirds: flocks working the surface mark food the cetaceans share.</li>
+      <li>If you spot something, search the water to either side — whales travel, and they surface again nearby.</li>
+      <li>Take care on unfenced cliffs.</li>
+    </ul>
+    <p style="margin:0 0 14px;font-size:14px;opacity:.8">After the Caithness Field Club&rsquo;s cetacean guidance and the Highland Council&rsquo;s Wild Coastal Trail.</p>
+  </div>
+</section>
+
+<section id="trackers">
+  <div class="band-dark">
+    <h2>Trackers &amp; groups</h2>
+    <p style="color:#f4efe4;opacity:.92;max-width:760px;margin:0 0 22px">Everything that keeps this coast watched. <b style="color:var(--ochre)">Live feed</b> means the page updates itself; <b style="color:var(--ochre)">curated link</b> means a page or group to visit — Facebook and Instagram have no open feeds, so those are links, not live data.</p>
+    <div class="cards">
+
+      <article class="tcard">
+        <h3>Sea Watch Foundation</h3>
+        <span class="badge live">Live page</span>
+        <p>The UK&rsquo;s cetacean monitoring charity — a database of 300,000+ sightings over 50 years. Recent sightings from every platform, with a map view, and an online form and the Sea Watcher app to submit your own.</p>
+        <ul>
+          <li><a href="https://www.seawatchfoundation.org.uk/recent-sightings/">Recent sightings</a></li>
+          <li><a href="https://www.seawatchfoundation.org.uk/sightingsform/">Submit a sighting online</a></li>
+          <li><a href="https://www.seawatchfoundation.org.uk/sightings-app/">Sea Watcher app</a></li>
+        </ul>
+      </article>
+
+      <article class="tcard">
+        <h3>Orca Watch</h3>
+        <span class="badge">Annual event</span>
+        <p>Nine days every year, hub at John o&rsquo; Groats, watches across Caithness, North Sutherland, Orkney and Shetland. Next: <b>29 May – 6 June 2027</b>; applications open in January.</p>
+        <ul>
+          <li><a href="https://www.seawatchfoundation.org.uk/orca-watch/">Orca Watch</a></li>
+          <li><a href="https://www.seawatchfoundation.org.uk/orca-watch-sightings/">Orca Watch sightings</a></li>
+          <li><a href="https://www.facebook.com/orcawatchers">Facebook page</a> · <a href="https://www.facebook.com/groups/orcawatch/">Facebook group</a></li>
+        </ul>
+      </article>
+
+      <article class="tcard">
+        <h3>WDC Shorewatch</h3>
+        <span class="badge">Citizen science</span>
+        <p>Whale and Dolphin Conservation&rsquo;s network of trained volunteers doing 10-minute surveys from set sites around Scotland — 1,053 volunteers, 100,000 watches since 2005, 18 species recorded.</p>
+        <ul>
+          <li><a href="https://uk.whales.org/whales-dolphins/how-we-help/shorewatch-scotland/">Shorewatch, Scotland</a></li>
+        </ul>
+      </article>
+
+      <article class="tcard">
+        <h3>HWDT Whale Track</h3>
+        <span class="badge live">Live map</span>
+        <p>The Hebridean Whale &amp; Dolphin Trust&rsquo;s live sightings map and reporting app. West-coast focused — Caithness records are welcome, but the map&rsquo;s heartland is the Hebrides.</p>
+        <ul>
+          <li><a href="https://whaletrack.hwdt.org/sightings-map/">Live sightings map</a></li>
+          <li><a href="https://www.hwdt.org/whale-track/">About Whale Track</a></li>
+          <li>Instagram: <a href="https://www.instagram.com/hwdt_org/">@hwdt_org</a></li>
+        </ul>
+      </article>
+
+      <article class="tcard">
+        <h3>SMASS — strandings</h3>
+        <span class="badge help">Report here</span>
+        <p>The Scottish Marine Animal Stranding Scheme investigates dead stranded marine animals around Scotland&rsquo;s coast. Report a dead stranding on <b>07979 245 893</b> or <a href="mailto:reports@strandings.org">reports@strandings.org</a>.</p>
+        <ul>
+          <li><a href="https://strandings.org/report/">Report a stranding</a></li>
+          <li>Instagram: <a href="https://www.instagram.com/Strandings/">@Strandings</a></li>
+        </ul>
+      </article>
+
+      <article class="tcard">
+        <h3>BDMLR — live rescue</h3>
+        <span class="badge help">Rescue · 24 hours</span>
+        <p>British Divers Marine Life Rescue answers live strandings around the clock: <b>01825 765 546</b>. The Scottish SPCA helpline is <b>03000 999 999</b>.</p>
+        <ul>
+          <li><a href="https://www.bdmlr.org.uk/">bdmlr.org.uk</a></li>
+        </ul>
+      </article>
+
+      <article class="tcard">
+        <h3>NatureScot</h3>
+        <span class="badge">Official</span>
+        <p>Scotland&rsquo;s nature agency: marine mammal pages, the seven common cetaceans, and the Scottish Marine Wildlife Watching Code.</p>
+        <ul>
+          <li><a href="https://www.nature.scot/plants-animals-and-fungi/mammals/marine-mammals">Marine mammals</a></li>
+          <li><a href="https://www.nature.scot/plants-animals-and-fungi/mammals/marine-mammals/dolphins-whales-and-porpoises">Dolphins, whales and porpoises</a></li>
+        </ul>
+      </article>
+
+      <article class="tcard">
+        <h3>Marine Directorate</h3>
+        <span class="badge">Official</span>
+        <p>The Scottish Government&rsquo;s marine pages — marine mammal policy, the Moray Firth bottlenose dolphin SAC, and the funding behind SMASS.</p>
+        <ul>
+          <li><a href="https://www.gov.scot/policies/marine-environment/marine-mammals/">Marine mammals — gov.scot</a></li>
+        </ul>
+      </article>
+
+      <article class="tcard">
+        <h3>NBN Atlas</h3>
+        <span class="badge">Records</span>
+        <p>The National Biodiversity Network&rsquo;s searchable atlas of UK wildlife records, including cetaceans and seals. Website only — its API was not verified in this session.</p>
+        <ul>
+          <li><a href="https://nbnatlas.org/">nbnatlas.org</a></li>
+        </ul>
+      </article>
+
+      <article class="tcard">
+        <h3>OBIS</h3>
+        <span class="badge">Research data</span>
+        <p>The global Ocean Biodiversity Information System. Its public API works for this coast — 847 orca records in the Caithness box, the most recent from 2018. An archive, not a live feed.</p>
+        <ul>
+          <li><a href="https://obis.org/">obis.org</a></li>
+        </ul>
+      </article>
+
+      <article class="tcard">
+        <h3>Caithness &amp; Moray Firth Cetacean Sightings</h3>
+        <span class="badge">Facebook group</span>
+        <p>The fastest local news — real-time tip-offs and photographs from watchers along the coast, including the 27-orca pod on 7 November 2026. Search Facebook for the group name to join; no public link was verifiable.</p>
+      </article>
+
+      <article class="tcard">
+        <h3>Caithness Field Club</h3>
+        <span class="badge">Local knowledge</span>
+        <p>The Field Club&rsquo;s 2005 cetacean bulletin is still the best local how-to: headlands, calm days, seabird flocks — and the 2000 whale survey that logged twelve species plus basking shark on this coast.</p>
+        <ul>
+          <li><a href="http://caithness.org/caithnessfieldclub/bulletins/2005/caithnesscetaceans.htm">Caithness cetaceans</a></li>
+        </ul>
+      </article>
+
+      <article class="tcard">
+        <h3>The Broch Project</h3>
+        <span class="badge">Local knowledge</span>
+        <p>Caithness Broch Project pages on the Firth, the headlands and the whales — including why the Pentland Firth is the UK&rsquo;s top orca spot.</p>
+        <ul>
+          <li><a href="https://www.thebrochproject.co.uk/locations/the-pentland-firth">The Pentland Firth</a></li>
+          <li><a href="https://www.thebrochproject.co.uk/locations/dunnet-head">Dunnet Head</a></li>
+          <li><a href="https://www.thebrochproject.co.uk/locations/whales">Whales</a></li>
+        </ul>
+      </article>
+
+      <article class="tcard">
+        <h3>Wild Coastal Trail</h3>
+        <span class="badge">Leaflet</span>
+        <p>The Highland Council&rsquo;s eight-site Wild Coastal Trail leaflet for Caithness — the headlands, what you might see, and the rangers to call.</p>
+        <ul>
+          <li><a href="https://pentlandlodgehouse.co.uk/wp-content/uploads/2014/11/Wild_coastal_trail___Caithness.pdf">Trail leaflet (PDF)</a></li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="report">
+  <h2>Report a sighting — or a stranding</h2>
+  <div class="report">
+    <article class="panel seen">
+      <h3>Seen something alive?</h3>
+      <p>Record the date, time, location, species, number of animals, behaviour — and photographs if you have them. Then:</p>
+      <ul>
+        <li><a href="https://www.seawatchfoundation.org.uk/sightingsform/">Sea Watch Foundation sighting form</a> — feeds the national database.</li>
+        <li>Log it on the <a href="https://whaletrack.hwdt.org/sightings-map/">Whale Track</a> app or map.</li>
+        <li>Post in the Caithness &amp; Moray Firth Cetacean Sightings Facebook group — the fastest local pickup.</li>
+      </ul>
+      <p>A single timestamped photo can identify a known individual or confirm a movement nobody had recorded.</p>
+    </article>
+    <article class="panel help">
+      <h3>Found a stranded animal?</h3>
+      <p class="big">Alive: <a href="tel:01825765546">01825 765 546</a></p>
+      <p>British Divers Marine Life Rescue, 24 hours a day. The Scottish SPCA helpline is <a href="tel:03000999999">03000 999 999</a>. Do <b>not</b> try to push the animal back to sea. Keep quiet, keep children and dogs away — noise and crowding cause distress.</p>
+      <p class="big">Dead: <a href="tel:07979245893">07979 245 893</a></p>
+      <p>Scottish Marine Animal Stranding Scheme, or <a href="mailto:reports@strandings.org">reports@strandings.org</a>. Give the date found, the location (a grid reference if you can), and photographs. Do not handle the animal — wild marine mammals can carry disease.</p>
+    </article>
+  </div>
+  <p class="note" style="margin-top:18px">Watch by the <b>Scottish Marine Wildlife Watching Code</b> (NatureScot): keep your distance, never chase or crowd an animal, and let it come to you — or not at all.</p>
+</section>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Caithness Cetaceans — a field notebook for the Caithness coast, from Thurso to John o&rsquo; Groats. Live sightings come from the iNaturalist public API; Facebook and Instagram are curated links, not live feeds. Every source is listed in the README.</p>
+    <p>Built for Ian Cleary · November 2026</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var list = document.getElementById('sight-list');
+  var empty = document.getElementById('sightings-empty');
+  var updatedTop = document.getElementById('updated-top');
+  function fmtDate(iso){
+    if(!iso) return 'Date unknown';
+    var d = new Date(iso + 'T12:00:00');
+    if(isNaN(d)) return iso;
+    return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  }
+  function fmtUpdated(iso){
+    if(!iso) return 'unknown';
+    var d = new Date(iso);
+    if(isNaN(d)) return iso;
+    return d.toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+  }
+  fetch('data.json').then(function(r){ if(!r.ok) throw new Error('no data'); return r.json(); })
+  .then(function(data){
+    updatedTop.textContent = fmtUpdated(data.updated_at);
+    var rows = (data.sightings || []).slice(0, 30);
+    if(!rows.length){ empty.style.display = 'block'; return; }
+    rows.forEach(function(s){
+      var li = document.createElement('li');
+      var when = document.createElement('span'); when.className = 'when'; when.textContent = fmtDate(s.date);
+      var what = document.createElement('span'); what.className = 'what'; what.textContent = s.species + ' ';
+      var lat = document.createElement('span'); lat.className = 'latin'; lat.textContent = s.scientific_name || ''; what.appendChild(lat);
+      var where = document.createElement('span'); where.className = 'where'; where.textContent = s.place || 'Caithness coast';
+      li.appendChild(when); li.appendChild(what); li.appendChild(where);
+      if(s.is_shark){
+        var tag = document.createElement('span'); tag.className = 'shark-tag'; tag.textContent = 'Fish, not a mammal'; li.appendChild(tag);
+      }
+      if(s.url){
+        var a = document.createElement('a'); a.className = 'src'; a.href = s.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'iNaturalist \u2197'; li.appendChild(a);
+      }
+      list.appendChild(li);
+    });
+  })
+  .catch(function(){
+    updatedTop.textContent = 'unavailable';
+    empty.style.display = 'block';
+  });
+})();
+</script>
+</body>
+</html>
