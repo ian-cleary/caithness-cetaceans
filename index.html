@@ -56,6 +56,25 @@ h3{font:400 clamp(20px,2.4vw,24px)/1.15 var(--display);text-transform:uppercase;
 .sight-list .where{color:var(--muted);font-size:15px}
 .sight-list .src{margin-left:auto;font-size:13px;font-weight:700}
 .sight-list .shark-tag{display:inline-block;background:var(--sea);color:#fff;font:800 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;border-radius:4px;padding:3px 8px}
+.sight-list .dist{margin-left:auto;background:var(--forest);color:#f4efe4;font:800 12px var(--sans);letter-spacing:.06em;border-radius:4px;padding:3px 8px;white-space:nowrap}
+.sight-list .dist.near{background:var(--ochre);color:var(--forest-deep)}
+.sight-list .src-tag{font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.sight-list .src{margin-left:0}
+/* Featured latest sighting */
+.latest-feature{display:none;background:var(--card);border:2px solid var(--forest);border-top:8px solid var(--ochre);border-radius:4px;padding:18px 20px;margin:0 0 16px}
+.latest-feature .kicker{display:inline-block;margin:0 0 8px;padding:6px 12px;background:var(--ochre);color:var(--forest-deep);font:800 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;border-radius:4px}
+.latest-feature h3{margin:0 0 4px;font-size:clamp(26px,3.4vw,36px)}
+.latest-feature h3 .latin{font:italic 400 15px/1.3 var(--sans);text-transform:none;color:var(--muted)}
+.latest-feature p{margin:4px 0;font-size:16px}
+.latest-feature .dist{display:inline-block;background:var(--forest);color:#f4efe4;font:800 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:4px 9px;margin-right:8px}
+.latest-feature .dist.near{background:var(--ochre);color:var(--forest-deep)}
+/* Sort + feed meta */
+.sort-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 10px}
+.sort-row span{font:800 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sort-btn{font:800 13px var(--sans);letter-spacing:.04em;padding:7px 13px;border:2px solid var(--forest);border-radius:4px;background:var(--card);color:var(--forest);cursor:pointer}
+.sort-btn[aria-pressed="true"]{background:var(--forest);color:#f4efe4}
+.feed-meta{font-size:15px;color:var(--muted);margin:0 0 14px}
+.feed-meta b{color:var(--forest)}
 #sightings-empty{display:none;background:var(--card);border:2px solid var(--forest);border-radius:4px;padding:18px;font-size:16px}
 .species{background:var(--card);border:2px solid var(--forest);border-radius:4px;margin:0 0 22px;overflow:hidden}
 .species>header{display:flex;align-items:center;flex-wrap:wrap;gap:12px;background:var(--forest);color:#fff;padding:12px 16px}
@@ -112,6 +131,10 @@ footer.site p:last-child{margin:0;font:800 12px/1.5 var(--sans);letter-spacing:.
   .species>header .sname{font-size:18px}
   .species>header .glyph{flex-basis:52px;width:52px;height:39px}
   .band-dark{padding:28px 20px 32px}
+  .sight-list li{padding:10px 12px;gap:4px 8px}
+  .sight-list .where{flex-basis:100%}
+  .latest-feature{padding:14px 16px}
+  .latest-feature h3{font-size:26px}
 }
 </style>
 </head>
@@ -177,10 +200,17 @@ footer.site p:last-child{margin:0;font:800 12px/1.5 var(--sans);letter-spacing:.
 
 <section id="sightings">
   <h2>Recent sightings</h2>
-  <p class="note">Live from the <b>iNaturalist</b> public API — the latest public records of whales, dolphins, porpoises, seals and basking sharks inside the Caithness coast box (lat 58.30–58.80, lng −4.60–−2.70). Refreshed every few hours. Seals dominate this feed; for whales and dolphins the fastest news is the Facebook group and Sea Watch, below.</p>
+  <p class="note">Live from two public feeds — <b>iNaturalist</b> and the <b>Sea Watch Foundation</b> (region 2: Orkney &amp; North Scotland) — the latest public records of whales, dolphins, porpoises, seals and basking sharks inside the Caithness coast box (lat 58.30–58.80, lng −4.60–−2.70). Distances are from Thurso; <b>Near Thurso</b> means within 15 km. Records that name a place instead of coordinates are matched to the nearest named place on the coast, and their distances are marked ≈.</p>
+  <div class="latest-feature" id="latest-feature"></div>
+  <div class="sort-row" id="sort-row" role="group" aria-label="Sort sightings">
+    <span>Sort</span>
+    <button class="sort-btn" id="sort-recent" aria-pressed="true" type="button">Most recent</button>
+    <button class="sort-btn" id="sort-nearest" aria-pressed="false" type="button">Nearest to Thurso</button>
+  </div>
+  <p class="feed-meta" id="feed-meta">Loading the live feed…</p>
   <ul class="sight-list" id="sight-list"></ul>
   <div id="sightings-empty">The live feed could not be loaded just now. The trackers below are the next best place to look — <a href="https://www.seawatchfoundation.org.uk/recent-sightings/">Sea Watch recent sightings</a> and the <a href="https://www.seawatchfoundation.org.uk/orca-watch-sightings/">Orca Watch sightings</a> pages are updated through the season.</div>
-  <p class="note">Every record links back to its iNaturalist observation, with the observer named there. Unverified sightings appear too — iNaturalist is a public log, not a verified list.</p>
+  <p class="note">Every record links back to its source — an iNaturalist observation or the Sea Watch recent-sightings page — with the observer named there. Unverified sightings appear too: these are public logs, not verified lists. The same event sometimes appears on both feeds; it is listed once.</p>
 </section>
 
 <section id="species">
@@ -248,6 +278,7 @@ footer.site p:last-child{margin:0;font:800 12px/1.5 var(--sans);letter-spacing:.
       <li><b>Long-finned pilot whale</b> — regularly seen off this coast, in tight groups.</li>
       <li><b>Atlantic white-sided dolphin</b> — recorded off Caithness, often with white-beaked dolphins.</li>
       <li><b>Fin whale</b> — the second-largest animal on Earth, in deeper water offshore.</li>
+      <li><b>Walrus</b> — a rare visitor: one was reported at Reiss Sands, Wick, on 9 October 2026 (Sea Watch Foundation).</li>
       <li><b>Basking shark</b> — <i>a fish, not a mammal</i>: the giant filter-feeder passes through the Firth on rare summer days. Report it to the Marine Conservation Society&rsquo;s Basking Shark Sightings Project.</li>
     </ul>
   </div>
@@ -433,7 +464,10 @@ footer.site p:last-child{margin:0;font:800 12px/1.5 var(--sans);letter-spacing:.
       <article class="tcard">
         <h3>Caithness &amp; Moray Firth Cetacean Sightings</h3>
         <span class="badge">Facebook group</span>
-        <p>The fastest local news — real-time tip-offs and photographs from watchers along the coast, including the 27-orca pod on 7 November 2026. Search Facebook for the group name to join; no public link was verifiable.</p>
+        <p>The fastest local news — real-time tip-offs and photographs from watchers along the coast, including the 27-orca pod on 7 November 2026. A public group with 52,000 members; recent posts include orca off Scrabster lighthouse and orca passing Duncansby.</p>
+        <ul>
+          <li><a href="https://www.facebook.com/groups/1185047925030728/">Join the group on Facebook</a></li>
+        </ul>
       </article>
 
       <article class="tcard">
@@ -506,6 +540,16 @@ footer.site p:last-child{margin:0;font:800 12px/1.5 var(--sans);letter-spacing:.
   var list = document.getElementById('sight-list');
   var empty = document.getElementById('sightings-empty');
   var updatedTop = document.getElementById('updated-top');
+  var feature = document.getElementById('latest-feature');
+  var sortRow = document.getElementById('sort-row');
+  var meta = document.getElementById('feed-meta');
+  var sortRecent = document.getElementById('sort-recent');
+  var sortNearest = document.getElementById('sort-nearest');
+  var rows = [];
+  var sortMode = 'recent';
+  // Thurso week ends Sat 21 Nov 2026; checks are every 30 minutes
+  // until then, weekly after.
+  var THURSO_END = new Date('2026-11-22T00:00:00Z');
   function fmtDate(iso){
     if(!iso) return 'Date unknown';
     var d = new Date(iso + 'T12:00:00');
@@ -518,30 +562,164 @@ footer.site p:last-child{margin:0;font:800 12px/1.5 var(--sans);letter-spacing:.
     if(isNaN(d)) return iso;
     return d.toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
   }
-  fetch('data.json').then(function(r){ if(!r.ok) throw new Error('no data'); return r.json(); })
-  .then(function(data){
-    updatedTop.textContent = fmtUpdated(data.updated_at);
-    var rows = (data.sightings || []).slice(0, 30);
-    if(!rows.length){ empty.style.display = 'block'; return; }
-    rows.forEach(function(s){
+  function distKm(s){
+    if(s.distance_km === null || s.distance_km === undefined) return null;
+    return (s.approx_location ? '\u2248' : '') + s.distance_km + ' km';
+  }
+  function distChipText(s){
+    var d = distKm(s);
+    if(d === null) return '';
+    if(s.near_thurso) return 'Near Thurso \u00b7 ' + d;
+    return d;
+  }
+  function sourceShort(s){
+    if(s.source === 'iNaturalist + Sea Watch') return 'iNat + Sea Watch';
+    return s.source || '';
+  }
+  function linkLabel(s){
+    if(s.source === 'Sea Watch') return 'Sea Watch \u2197';
+    return 'iNaturalist \u2197';
+  }
+  function renderLatest(s){
+    feature.innerHTML = '';
+    if(!s){ feature.style.display = 'none'; return; }
+    feature.style.display = 'block';
+    var kick = document.createElement('p');
+    kick.className = 'kicker'; kick.textContent = 'Latest sighting';
+    feature.appendChild(kick);
+    var h = document.createElement('h3');
+    h.textContent = s.species + (s.count ? ' \u00d7' + s.count : '') + ' ';
+    var lat = document.createElement('span');
+    lat.className = 'latin'; lat.textContent = s.scientific_name || '';
+    h.appendChild(lat);
+    feature.appendChild(h);
+    var p1 = document.createElement('p');
+    p1.textContent = fmtDate(s.date) + ' \u00b7 ' + (s.place || 'Caithness coast');
+    feature.appendChild(p1);
+    var p2 = document.createElement('p');
+    var d = distKm(s);
+    if(d){
+      var chip = document.createElement('span');
+      chip.className = 'dist' + (s.near_thurso ? ' near' : '');
+      chip.textContent = s.near_thurso ? 'Near Thurso \\u00b7 ' + d : d + ' from Thurso';
+      p2.appendChild(chip);
+    }
+    var src = document.createElement('span');
+    src.textContent = sourceShort(s) + (s.observer ? ' \u00b7 by ' + s.observer : '');
+    p2.appendChild(src);
+    feature.appendChild(p2);
+    if(s.url){
+      var a = document.createElement('a');
+      a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = linkLabel(s);
+      feature.appendChild(a);
+    }
+  }
+  function renderList(rs){
+    list.innerHTML = '';
+    rs.forEach(function(s){
       var li = document.createElement('li');
-      var when = document.createElement('span'); when.className = 'when'; when.textContent = fmtDate(s.date);
-      var what = document.createElement('span'); what.className = 'what'; what.textContent = s.species + ' ';
-      var lat = document.createElement('span'); lat.className = 'latin'; lat.textContent = s.scientific_name || ''; what.appendChild(lat);
-      var where = document.createElement('span'); where.className = 'where'; where.textContent = s.place || 'Caithness coast';
+      var when = document.createElement('span');
+      when.className = 'when'; when.textContent = fmtDate(s.date);
+      var what = document.createElement('span');
+      what.className = 'what';
+      what.textContent = s.species + (s.count ? ' \u00d7' + s.count : '') + ' ';
+      var lat = document.createElement('span');
+      lat.className = 'latin'; lat.textContent = s.scientific_name || '';
+      what.appendChild(lat);
+      var where = document.createElement('span');
+      where.className = 'where';
+      where.textContent = s.place || 'Caithness coast';
       li.appendChild(when); li.appendChild(what); li.appendChild(where);
       if(s.is_shark){
-        var tag = document.createElement('span'); tag.className = 'shark-tag'; tag.textContent = 'Fish, not a mammal'; li.appendChild(tag);
+        var tag = document.createElement('span');
+        tag.className = 'shark-tag'; tag.textContent = 'Fish, not a mammal';
+        li.appendChild(tag);
       }
+      var chip = document.createElement('span');
+      chip.className = 'dist' + (s.near_thurso ? ' near' : '');
+      chip.textContent = distChipText(s);
+      if(chip.textContent) li.appendChild(chip);
+      var stag = document.createElement('span');
+      stag.className = 'src-tag'; stag.textContent = sourceShort(s);
+      li.appendChild(stag);
       if(s.url){
-        var a = document.createElement('a'); a.className = 'src'; a.href = s.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'iNaturalist \u2197'; li.appendChild(a);
+        var a = document.createElement('a');
+        a.className = 'src'; a.href = s.url; a.target = '_blank';
+        a.rel = 'noopener'; a.textContent = linkLabel(s);
+        li.appendChild(a);
       }
       list.appendChild(li);
     });
+  }
+  function renderMeta(data){
+    meta.innerHTML = '';
+    var updated = data.updated_at ? new Date(data.updated_at) : null;
+    var parts = [];
+    if(updated) parts.push('Updated ' + fmtUpdated(data.updated_at));
+    if(updated){
+      if(new Date() < THURSO_END){
+        var next = new Date(updated.getTime() + 30 * 60000);
+        parts.push('next check about ' + next.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}));
+      } else {
+        parts.push('checked weekly from 22 Nov');
+      }
+    }
+    meta.appendChild(document.createTextNode(parts.join(' \u00b7 ')));
+    var nearest = null;
+    (data.sightings || []).forEach(function(s){
+      if(s.distance_km === null || s.distance_km === undefined) return;
+      if(!nearest || s.distance_km < nearest.distance_km) nearest = s;
+    });
+    if(nearest){
+      meta.appendChild(document.createTextNode(' \u00b7 '));
+      var b = document.createElement('b');
+      b.textContent = 'Nearest right now: ' + nearest.species + ' \u2014 ' +
+        distKm(nearest) + ', ' + (nearest.place || 'Caithness coast') +
+        ' (' + fmtDate(nearest.date) + ')';
+      meta.appendChild(b);
+    }
+  }
+  function sortedRows(){
+    var copy = rows.slice();
+    if(sortMode === 'nearest'){
+      copy.sort(function(a, b){
+        var da = (a.distance_km === null || a.distance_km === undefined) ? 9999 : a.distance_km;
+        var db = (b.distance_km === null || b.distance_km === undefined) ? 9999 : b.distance_km;
+        if(da !== db) return da - db;
+        return (b.date || '').localeCompare(a.date || '');
+      });
+    }
+    return copy;
+  }
+  function applySort(){
+    sortRecent.setAttribute('aria-pressed', sortMode === 'recent' ? 'true' : 'false');
+    sortNearest.setAttribute('aria-pressed', sortMode === 'nearest' ? 'true' : 'false');
+    renderList(sortedRows());
+  }
+  sortRecent.addEventListener('click', function(){ sortMode = 'recent'; applySort(); });
+  sortNearest.addEventListener('click', function(){ sortMode = 'nearest'; applySort(); });
+  fetch('data.json').then(function(r){ if(!r.ok) throw new Error('no data'); return r.json(); })
+  .then(function(data){
+    updatedTop.textContent = fmtUpdated(data.updated_at);
+    rows = (data.sightings || []).slice(0, 40);
+    if(!rows.length){
+      empty.style.display = 'block';
+      feature.style.display = 'none';
+      sortRow.style.display = 'none';
+      meta.textContent = 'No sightings in the feed just now.';
+      return;
+    }
+    renderLatest(rows[0]);
+    renderMeta(data);
+    applySort();
   })
   .catch(function(){
     updatedTop.textContent = 'unavailable';
     empty.style.display = 'block';
+    feature.style.display = 'none';
+    sortRow.style.display = 'none';
+    meta.textContent = 'The live feed could not be loaded just now.';
   });
 })();
 </script>
