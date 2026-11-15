@@ -4,9 +4,8 @@ Marine mammals and cetaceans on the Caithness coast — Thurso, Dunnet,
 John o' Groats, Dunnet Head, Duncansby Head, Scrabster, Dunnet Bay,
 Sandside Bay and the Pentland Firth. Static GitHub Pages site.
 
-Deploy: `gh.py sync` to a new repo named `ian-cleary/caithness-cetaceans`
-(index.html + data.json at the root; the workflow file goes to
-`.github/workflows/update-sightings.yml`).
+Deploy: `gh.py sync` to repo `ian-cleary/caithness-cetaceans`
+(index.html + data.json at the root; README.md too).
 
 ## Live feed
 
@@ -14,8 +13,11 @@ Deploy: `gh.py sync` to a new repo named `ian-cleary/caithness-cetaceans`
 mammal observations inside the Caithness coast box
 (lat 58.30–58.80, lng −4.60–−2.70), keeps the marine species, drops
 records whose place text says Orkney, and writes `data.json`
-(up to 30 records, most recent first). `update-sightings.yml` runs it
-every 6 hours on GitHub Actions. On any fetch failure the previous
+(up to 30 records, most recent first). A Muse cron runs it every 6
+hours and syncs data.json via gh.py. (The GitHub token lacks the
+`workflow` scope, so the Actions workflow file is not deployed —
+the API returns 404 for `.github/workflows/` paths. Refresh is by
+cron instead, same cadence.) On any fetch failure the previous
 `data.json` is kept, so a failed run never clears real sightings.
 
 Verified live in this session (15 Nov 2026): the query returns real
