@@ -30,9 +30,8 @@ a{color:var(--rust);text-underline-offset:2px}
 a:hover{color:var(--forest)}
 .wrap{max-width:1020px;margin:0 auto;padding:0 20px 48px}
 header.mast{position:relative;overflow:hidden;background:var(--forest-deep);color:#f4efe4;border-bottom:8px solid var(--ochre)}
-header.mast .scene{position:absolute;inset:0;width:100%;height:100%}
+header.mast .scene{position:relative;height:clamp(190px,30vw,320px);overflow:hidden}
 header.mast .scene svg{width:100%;height:100%;display:block}
-header.mast .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,42,29,.82) 0%,rgba(21,42,29,.45) 30%,rgba(21,42,29,.08) 55%,rgba(21,42,29,.55) 100%)}
 header.mast .wrap{position:relative;padding-top:clamp(44px,7vh,80px);padding-bottom:56px}
 .eyebrow{display:inline-block;margin:0 0 22px;padding:9px 16px;border:2px solid var(--ochre);transform:rotate(-1.4deg);background:rgba(21,42,29,.6);font:800 13px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--ochre)}
 header.mast h1{margin:0;font:400 clamp(44px,8vw,84px)/.94 var(--display);letter-spacing:.01em;text-transform:uppercase;text-shadow:0 4px 22px rgba(0,0,0,.5)}
@@ -141,9 +140,15 @@ footer.site p:last-child{margin:0;font:800 12px/1.5 var(--sans);letter-spacing:.
 <body>
 
 <header class="mast">
+
+  <div class="wrap">
+    <p class="eyebrow">Caithness coast · Thurso to John o&rsquo; Groats</p>
+    <h1>Caithness<br>Cetaceans</h1>
+    <p>Whales, dolphins, porpoises and seals on the Caithness coast — what&rsquo;s been seen lately, where to watch, and who keeps the records.</p>
+  </div>
   <div class="scene" aria-hidden="true">
     <!-- Flat infographic seascape: headland, Pentland Firth, orca and dolphins. Drawn SVG, no photographs. -->
-    <svg viewBox="0 0 1200 480" preserveAspectRatio="xMidYMax slice">
+    <svg viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice">
       <rect x="0" y="0" width="1200" height="480" fill="#f4efe4"/>
       <circle cx="1020" cy="86" r="46" fill="#d9a441"/>
       <circle cx="1020" cy="86" r="62" fill="none" stroke="#d9a441" stroke-width="3" opacity=".45"/>
@@ -179,12 +184,6 @@ footer.site p:last-child{margin:0;font:800 12px/1.5 var(--sans);letter-spacing:.
         <circle cx="-14" cy="-26" r="2.4" fill="#14211a"/>
       </g>
     </svg>
-  </div>
-  <div class="shade"></div>
-  <div class="wrap">
-    <p class="eyebrow">Caithness coast · Thurso to John o&rsquo; Groats</p>
-    <h1>Caithness<br>Cetaceans</h1>
-    <p>Whales, dolphins, porpoises and seals on the Caithness coast — what&rsquo;s been seen lately, where to watch, and who keeps the records.</p>
   </div>
   <div class="hero-cap"><span><b>Live feed</b> · iNaturalist public sightings</span><span><b>Updated</b> · <span id="updated-top">loading…</span></span><span><b>Area</b> · Caithness coast &amp; Pentland Firth</span></div>
 </header>
