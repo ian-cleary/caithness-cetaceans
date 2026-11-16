@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16T14:04:56.937698+00:00",
+  "updated_at": "2026-11-16T15:04:56.316461+00:00",
   "sources": [
     {
       "name": "iNaturalist public API (no key)",
@@ -281,24 +281,6 @@
     },
     {
       "date": "2026-10-07",
-      "species": "Risso's dolphin",
-      "scientific_name": "Grampus griseus",
-      "place": "58.46N 3.06W",
-      "count": 15,
-      "latitude": 58.46,
-      "longitude": -3.06,
-      "url": "https://www.seawatchfoundation.org.uk/recent-sightings/#risso-s-dolphin-2026-10-07-58.46--3.06",
-      "photo": null,
-      "quality": null,
-      "observer": "Blacksheep509",
-      "is_shark": false,
-      "source": "Sea Watch",
-      "approx_location": false,
-      "distance_km": 30.7,
-      "near_thurso": false
-    },
-    {
-      "date": "2026-10-07",
       "species": "Minke whale",
       "scientific_name": "Balaenoptera acutorostrata",
       "place": "58.46N 3.06W",
@@ -311,6 +293,24 @@
       "observer": "Blacksheep509",
       "is_shark": false,
       "source": "iNaturalist + Sea Watch",
+      "approx_location": false,
+      "distance_km": 30.7,
+      "near_thurso": false
+    },
+    {
+      "date": "2026-10-07",
+      "species": "Risso's dolphin",
+      "scientific_name": "Grampus griseus",
+      "place": "58.46N 3.06W",
+      "count": 15,
+      "latitude": 58.46,
+      "longitude": -3.06,
+      "url": "https://www.seawatchfoundation.org.uk/recent-sightings/#risso-s-dolphin-2026-10-07-58.46--3.06",
+      "photo": null,
+      "quality": null,
+      "observer": "Blacksheep509",
+      "is_shark": false,
+      "source": "Sea Watch",
       "approx_location": false,
       "distance_km": 30.7,
       "near_thurso": false
